@@ -1,11 +1,12 @@
 {
   "name": "react-native-recorder-segments",
   "title": "React Native Recorder Segments",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "TODO",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publishnew": "yarn publish --access public"
   },
   "repository": {
     "type": "git",
@@ -15,13 +16,9 @@
   "keywords": [
     "react-native"
   ],
-  "author": {
-    "name": "dvhchuot",
-    "email": "dvhchuot@gmail.com"
-  },
+  "author": "dvhchuot <dvhchuot@gmail.com>",
   "license": "MIT",
   "licenseFilename": "LICENSE",
-  "readmeFilename": "README.md",
   "peerDependencies": {
     "react": "^16.8.1",
     "react-native": ">=0.59.0-rc.0 <1.0.x"
@@ -29,5 +26,9 @@
   "devDependencies": {
     "react": "^16.8.3",
     "react-native": "^0.59.10"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/dvhchuot/react-native-recorder-segments/issues"
+  },
+  "homepage": "https://github.com/dvhchuot/react-native-recorder-segments#readme"
 }
