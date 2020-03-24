@@ -10,7 +10,7 @@
     <!--        android:id="@+id/cvCameraPreview"-->
     <!--        android:layout_width="match_parent"-->
     <!--        android:layout_height="match_parent" />-->
-    <com.capichi.recorder.rnrecord.ui.CameraRecordGLSurfaceView
+    <com.dvhchuot.rnrecord.ui.CameraRecordGLSurfaceView
         android:id="@+id/myGLSurfaceView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
@@ -101,7 +101,7 @@
         app:layout_constraintStart_toEndOf="@+id/frameLayout"
         app:srcCompat="@drawable/ic_record" />
 
-    <com.capichi.recorder.rnffmpegcamera.ProgressSectionsView
+    <com.dvhchuot.rnrecord.ui.ProgressSectionsView
         android:id="@+id/progres_sections"
         android:layout_width="match_parent"
         android:layout_height="5dp"

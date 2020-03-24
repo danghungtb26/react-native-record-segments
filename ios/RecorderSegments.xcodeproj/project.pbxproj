@@ -122,7 +122,7 @@
 		048CDAD62429B92000AB56D4 /* SCRecordSessionSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRecordSessionSegment.m; sourceTree = "<group>"; };
 		048CDAD82429B92000AB56D4 /* Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scale.h; sourceTree = "<group>"; };
 		048CDAD92429B92000AB56D4 /* Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scale.m; sourceTree = "<group>"; };
-		048CDAFA2429CD1100AB56D4 /* Media copy.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Media copy.xcassets"; sourceTree = "<group>"; };
+		048CDAFB2429CE4000AB56D4 /* imagesModule.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = imagesModule.xcassets; sourceTree = "<group>"; };
 		134814201AA4EA6300B7C361 /* libRecorderSegments.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRecorderSegments.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -253,7 +253,7 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				048CDAFA2429CD1100AB56D4 /* Media copy.xcassets */,
+				048CDAFB2429CE4000AB56D4 /* imagesModule.xcassets */,
 				048CDA972429B92000AB56D4 /* Library */,
 				048CDA912429B92000AB56D4 /* UI */,
 				048CDAD72429B92000AB56D4 /* Util */,
