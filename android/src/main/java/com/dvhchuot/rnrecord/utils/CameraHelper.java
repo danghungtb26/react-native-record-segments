@@ -1,10 +1,13 @@
 package com.dvhchuot.rnrecord.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.hardware.Camera;
 import android.os.Environment;
 import android.util.Log;
 import android.view.Surface;
+
+import com.facebook.react.bridge.ReactApplicationContext;
 
 import java.io.File;
 import java.util.List;
@@ -87,6 +90,38 @@ public class CameraHelper {
 
         File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES), "Capichi");
+        // This location works best if you want the created images to be shared
+        // between applications and persist after your app has been uninstalled.
+
+        // Create the storage directory if it does not exist
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
+                Log.d(TAG, "failed to create directory");
+                return null;
+            }
+        }
+
+        // Create a media file name
+        File mediaFile;
+        if (type == MEDIA_TYPE_IMAGE) {
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+                    fileName + ".jpg");
+        } else if (type == MEDIA_TYPE_VIDEO) {
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+                    fileName + ".mp4");
+        } else {
+            return null;
+        }
+
+        return mediaFile;
+    }
+
+    public static File getOutputMediaFile(String fileName, int type, Context ctx) {
+        if (!Environment.getExternalStorageState().equalsIgnoreCase(Environment.MEDIA_MOUNTED)) {
+            return null;
+        }
+
+        File mediaStorageDir = new File(ctx.getCacheDir().getAbsolutePath(), "Record");
         // This location works best if you want the created images to be shared
         // between applications and persist after your app has been uninstalled.
 

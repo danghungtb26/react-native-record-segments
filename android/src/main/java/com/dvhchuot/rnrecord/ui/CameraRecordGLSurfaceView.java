@@ -14,6 +14,7 @@ import com.dvhchuot.rnrecord.recorder.FFmpegFrameRecorder;
 import com.dvhchuot.rnrecord.recorder.RunningThread;
 import com.dvhchuot.rnrecord.utils.CameraHelper;
 import com.dvhchuot.rnrecord.utils.VideoUtils;
+import com.facebook.react.uimanager.ThemedReactContext;
 
 import org.bytedeco.javacpp.avcodec;
 import org.bytedeco.javacpp.opencv_core;
@@ -36,7 +37,7 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 public class CameraRecordGLSurfaceView extends CameraGLSurfaceView implements SurfaceTexture.OnFrameAvailableListener, AudioRecordThread.AudioListener {
-
+    Context context;
 
     private FFmpegFrameRecorder recorder;
     private File mVideo;
@@ -75,7 +76,9 @@ public class CameraRecordGLSurfaceView extends CameraGLSurfaceView implements Su
     private Cameralistener cameralistener;
 
     public CameraRecordGLSurfaceView(Context context, AttributeSet attrs) {
+
         super(context, attrs);
+        this.context = context;
         init();
     }
 
@@ -306,7 +309,7 @@ public class CameraRecordGLSurfaceView extends CameraGLSurfaceView implements Su
         Frame frame;
 
         String recordedTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        File newFile = CameraHelper.getOutputMediaFile(recordedTime, CameraHelper.MEDIA_TYPE_VIDEO);
+        File newFile = CameraHelper.getOutputMediaFile(recordedTime, CameraHelper.MEDIA_TYPE_VIDEO, context);
         Log.e(LOG_TAG, "Output Video: " + newFile);
         resultRecorder = new FFmpegFrameRecorder(newFile, videowidth, videoHeight, 1);
         resultRecorder.setFormat(videoFormat);

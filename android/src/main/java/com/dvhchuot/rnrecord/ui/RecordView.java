@@ -243,6 +243,11 @@ public class RecordView extends ConstraintLayout implements LifecycleEventListen
             onGalleryPress();
             return;
         }
+
+        if(v.getId() == R.id.imv_flash) {
+            onChangeFlash();
+            return;
+        }
     }
 
     @Override
