@@ -95,6 +95,7 @@ public class RecordView extends ConstraintLayout implements LifecycleEventListen
         if(checkInitOrDone()) {
             return;
         }
+        onExit();
     }
 
     private void onExit() {

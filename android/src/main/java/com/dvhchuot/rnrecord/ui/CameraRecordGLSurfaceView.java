@@ -436,7 +436,7 @@ public class CameraRecordGLSurfaceView extends CameraGLSurfaceView implements Su
     private File onGetVideoPath(){
         if (mVideo== null ||!mVideo.exists()){
             String recordedTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-            mVideo = CameraHelper.getOutputMediaFile(recordedTime, CameraHelper.MEDIA_TYPE_VIDEO);
+            mVideo = CameraHelper.getOutputMediaFile(recordedTime, CameraHelper.MEDIA_TYPE_VIDEO, context);
             Log.e(LOG_TAG, "Output Video: " + mVideo);
         }
         return mVideo;
