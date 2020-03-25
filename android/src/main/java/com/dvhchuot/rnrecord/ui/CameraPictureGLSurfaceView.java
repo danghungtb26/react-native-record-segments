@@ -92,7 +92,7 @@ public class CameraPictureGLSurfaceView extends CameraGLSurfaceView implements S
 //                GLES20.glDeleteTextures(1, new int[]{bufferTexID}, 0);
 
                 String recordedTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-                File mFile = CameraHelper.getOutputMediaFile(recordedTime, CameraHelper.MEDIA_TYPE_IMAGE);
+                File mFile = CameraHelper.getOutputMediaFile(recordedTime, CameraHelper.MEDIA_TYPE_IMAGE, context);
                 try {
                     mFile.createNewFile();
                 } catch (IOException e) {
