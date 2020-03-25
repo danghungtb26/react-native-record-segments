@@ -153,8 +153,8 @@
     BOOL isDir = true;
     NSFileManager *fileManager= [NSFileManager defaultManager];
     if(![fileManager fileExistsAtPath:[NSString stringWithFormat:@"%@/record",[directoryUrl absoluteString]] isDirectory:&isDir])
-      if(![[NSFileManager defaultManager] createDirectoryAtURL:[directoryUrl URLByAppendingPathComponent:@"capichi" isDirectory:YES] withIntermediateDirectories:YES attributes:nil error:NULL]) {
-        NSLog(@"Error: Create folder failed %@", [directoryUrl URLByAppendingPathComponent:@"capichi"]);
+      if(![[NSFileManager defaultManager] createDirectoryAtURL:[directoryUrl URLByAppendingPathComponent:@"record" isDirectory:YES] withIntermediateDirectories:YES attributes:nil error:NULL]) {
+        NSLog(@"Error: Create folder failed %@", [directoryUrl URLByAppendingPathComponent:@"record"]);
       }
     NSLog(@"folder%@", [directoryUrl absoluteString]);
   

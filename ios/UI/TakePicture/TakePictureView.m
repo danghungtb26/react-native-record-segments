@@ -187,14 +187,26 @@
 
 - (NSString*)saveImage:(UIImage*)image
 {
-   NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
-    NSInteger time = timeStamp;
-    NSString *fileName = [NSString stringWithFormat: @"%ld.jpg", (long)time];
-   NSString *filePath =[[SCRecordSessionSegment segmentURLForFilename:fileName andDirectory:SCRecordSessionTemporaryDirectory] absoluteString];
-    
-
-   [UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES];
-   return filePath;
+   BOOL isDir = true;
+       NSFileManager *fileManager= [NSFileManager defaultManager];
+       if(![fileManager fileExistsAtPath:[NSString stringWithFormat:@"%@/record",NSTemporaryDirectory()] isDirectory:&isDir])
+         if(![[NSFileManager defaultManager] createDirectoryAtPath:[NSTemporaryDirectory() stringByAppendingFormat:@"record"] withIntermediateDirectories:YES attributes:nil error:NULL]) {
+           NSLog(@"Error: Create folder failed ");
+         }
+       NSLog(@"folder %@", [NSString stringWithFormat:@"%@/record",NSTemporaryDirectory()] );
+       
+   //    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+       NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
+           NSInteger time = timeStamp;
+           NSString *fileName = [NSString stringWithFormat: @"%ld.jpg", (long)time];
+       
+       NSString *name = [[NSProcessInfo processInfo] globallyUniqueString];
+       name = [name stringByAppendingString:@".jpg"];
+       NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"record/%@", fileName]];
+       
+       
+      [UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES];
+      return filePath;
 }
 
 
