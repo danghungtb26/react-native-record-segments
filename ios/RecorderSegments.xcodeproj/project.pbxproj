@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04065134242A5DC200B900E6 /* TakePictureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04065131242A5DC200B900E6 /* TakePictureManager.m */; };
+		04065135242A5DC200B900E6 /* TakePictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04065132242A5DC200B900E6 /* TakePictureView.m */; };
 		048CDADA2429B92000AB56D4 /* RecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CDA932429B92000AB56D4 /* RecordView.m */; };
 		048CDADB2429B92000AB56D4 /* RecoderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CDA942429B92000AB56D4 /* RecoderManager.m */; };
 		048CDADC2429B92000AB56D4 /* SCImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CDA9C2429B92000AB56D4 /* SCImageView.m */; };
@@ -54,6 +56,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		04065130242A5DC200B900E6 /* TakePictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePictureView.h; sourceTree = "<group>"; };
+		04065131242A5DC200B900E6 /* TakePictureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakePictureManager.m; sourceTree = "<group>"; };
+		04065132242A5DC200B900E6 /* TakePictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakePictureView.m; sourceTree = "<group>"; };
+		04065133242A5DC200B900E6 /* TakePictureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePictureManager.h; sourceTree = "<group>"; };
 		048CDA932429B92000AB56D4 /* RecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordView.m; sourceTree = "<group>"; };
 		048CDA942429B92000AB56D4 /* RecoderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecoderManager.m; sourceTree = "<group>"; };
 		048CDA952429B92000AB56D4 /* RecoderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecoderManager.h; sourceTree = "<group>"; };
@@ -137,9 +143,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0406512F242A5DC200B900E6 /* TakePicture */ = {
+			isa = PBXGroup;
+			children = (
+				04065130242A5DC200B900E6 /* TakePictureView.h */,
+				04065131242A5DC200B900E6 /* TakePictureManager.m */,
+				04065132242A5DC200B900E6 /* TakePictureView.m */,
+				04065133242A5DC200B900E6 /* TakePictureManager.h */,
+			);
+			path = TakePicture;
+			sourceTree = "<group>";
+		};
 		048CDA912429B92000AB56D4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0406512F242A5DC200B900E6 /* TakePicture */,
 				048CDA922429B92000AB56D4 /* Recorder */,
 			);
 			path = UI;
@@ -336,7 +354,9 @@
 				048CDAF42429B92000AB56D4 /* SCVideoPlayerView.m in Sources */,
 				048CDAF62429B92000AB56D4 /* UIImage+SCSaveToCameraRoll.m in Sources */,
 				048CDADA2429B92000AB56D4 /* RecordView.m in Sources */,
+				04065134242A5DC200B900E6 /* TakePictureManager.m in Sources */,
 				048CDAE62429B92000AB56D4 /* NSURL+SCSaveToCameraRoll.m in Sources */,
+				04065135242A5DC200B900E6 /* TakePictureView.m in Sources */,
 				048CDAEB2429B92000AB56D4 /* SCSaveToCameraRollOperation.m in Sources */,
 				048CDADC2429B92000AB56D4 /* SCImageView.m in Sources */,
 				048CDAEE2429B92000AB56D4 /* SCAssetExportSession.m in Sources */,

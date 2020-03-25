@@ -11,5 +11,6 @@ public class ReactProps {
     public static final String onErrorDiskspace = "onErrorDiskspace";
     public static final String onPressDraft = "onPressDraft";
 
-
+    public static final String onTakeDone = "onTakeDone";
+    public static final String onTakeExit = "onTakeExit";
 }
