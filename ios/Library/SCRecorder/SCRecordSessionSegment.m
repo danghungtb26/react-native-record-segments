@@ -152,13 +152,13 @@
     // phục vụ cho việc xoá file khi vào app
     BOOL isDir = true;
     NSFileManager *fileManager= [NSFileManager defaultManager];
-    if(![fileManager fileExistsAtPath:[NSString stringWithFormat:@"%@/capichi",[directoryUrl absoluteString]] isDirectory:&isDir])
+    if(![fileManager fileExistsAtPath:[NSString stringWithFormat:@"%@/record",[directoryUrl absoluteString]] isDirectory:&isDir])
       if(![[NSFileManager defaultManager] createDirectoryAtURL:[directoryUrl URLByAppendingPathComponent:@"capichi" isDirectory:YES] withIntermediateDirectories:YES attributes:nil error:NULL]) {
         NSLog(@"Error: Create folder failed %@", [directoryUrl URLByAppendingPathComponent:@"capichi"]);
       }
     NSLog(@"folder%@", [directoryUrl absoluteString]);
   
-    return [directoryUrl URLByAppendingPathComponent:[NSString stringWithFormat:@"capichi/%@",filename]];
+    return [directoryUrl URLByAppendingPathComponent:[NSString stringWithFormat:@"record/%@",filename]];
 }
 
 + (SCRecordSessionSegment *)segmentWithURL:(NSURL *)url info:(NSDictionary *)info {

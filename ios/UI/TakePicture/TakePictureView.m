@@ -187,10 +187,11 @@
 
 - (NSString*)saveImage:(UIImage*)image
 {
-   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-   NSString *name = [[NSProcessInfo processInfo] globallyUniqueString];
-   name = [name stringByAppendingString:@".jpg"];
-   NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:name];
+   NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
+    NSInteger time = timeStamp;
+    NSString *fileName = [NSString stringWithFormat: @"%ld.jpg", (long)time];
+   NSString *filePath =[[SCRecordSessionSegment segmentURLForFilename:fileName andDirectory:SCRecordSessionTemporaryDirectory] absoluteString];
+    
 
    [UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES];
    return filePath;
