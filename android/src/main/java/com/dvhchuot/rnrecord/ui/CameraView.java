@@ -121,6 +121,7 @@ public class CameraView extends ConstraintLayout implements LifecycleEventListen
         return camera.ismRecording();
     }
 
+    @Override
     public void onReshootSuccess() {
         callbackAfterUpdate();
     }

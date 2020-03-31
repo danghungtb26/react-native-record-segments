@@ -701,6 +701,7 @@ public class CameraRecordGLSurfaceView extends CameraGLSurfaceView implements Su
 
         if(cameralistener != null) {
             cameralistener.onReshootSuccess();
+            cameralistener.onProgress(0);
         }
     }
 

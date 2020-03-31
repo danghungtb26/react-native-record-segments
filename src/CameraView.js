@@ -40,7 +40,7 @@ class CameraView extends Component {
   }
 
   capture = () => {
-    RecordManager.done(this.findNode())
+    RecordManager.capture(this.findNode())
   }
 
   checkInitOrDone = () => {

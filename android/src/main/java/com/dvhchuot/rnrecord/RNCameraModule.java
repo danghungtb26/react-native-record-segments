@@ -139,7 +139,7 @@ public class RNCameraModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void flashChange(final int viewTag) {
+    public void changeFlash(final int viewTag) {
         UIManagerModule uiManager = reactContext.getNativeModule(UIManagerModule.class);
         uiManager.addUIBlock(new UIBlock() {
             @Override
@@ -157,7 +157,7 @@ public class RNCameraModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void switchChange(final int viewTag) {
+    public void changeSwitch(final int viewTag) {
         UIManagerModule uiManager = reactContext.getNativeModule(UIManagerModule.class);
         uiManager.addUIBlock(new UIBlock() {
             @Override
