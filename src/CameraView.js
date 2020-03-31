@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { requireNativeComponent, findNodeHandle, NativeModules } from 'react-native'
 import Proptypes from 'prop-types'
 
-const RecordManager = NativeModules.DVCameraManager
+const RecordManager = NativeModules.RNDVCamera
 
 class CameraView extends Component {
   constructor(props) {
@@ -52,8 +52,8 @@ class CameraView extends Component {
   }
 
   onDVAfterUpdate = e => {
-    const { onDVCameraReady } = this.props
-    onDVCameraReady(e.nativeEvent)
+    const { onDVAfterUpdate } = this.props
+    onDVAfterUpdate(e.nativeEvent)
   }
 
   onDVCameraReady = () => {
@@ -79,7 +79,7 @@ class CameraView extends Component {
   render() {
     return (
       <RNRecord
-        ref={this.camera.current}
+        ref={this.camera}
         {...this.props}
         onDoneStart={this.onDoneStart}
         onDoneSuccess={this.onDoneSuccess}
@@ -100,6 +100,14 @@ CameraView.propTypes = {
 
   onDVProgress: Proptypes.func,
   onDVCameraReady: Proptypes.func,
+}
+
+CameraView.defaultProps = {
+  onDVAfterUpdate: () => {},
+  onDoneStart: () => {},
+  onDoneSuccess: () => {},
+  onDVProgress: () => {},
+  onDVCameraReady: () => {}
 }
 
 export default CameraView

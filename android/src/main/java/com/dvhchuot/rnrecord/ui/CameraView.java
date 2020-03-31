@@ -65,7 +65,6 @@ public class CameraView extends ConstraintLayout implements LifecycleEventListen
         if(checkInitOrDone()) {
             return;
         }
-
         camera.setmRecording(true);
 
         callbackAfterUpdate();
@@ -150,6 +149,7 @@ public class CameraView extends ConstraintLayout implements LifecycleEventListen
 
     @Override
     public void onCameraOnReady() {
+        onNativeEventCameraReady();
     }
 
     @Override
@@ -202,7 +202,7 @@ public class CameraView extends ConstraintLayout implements LifecycleEventListen
         ReactContext reactContext = (ReactContext)getContext();
         reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ReactProps.onDoneStart,
+                ReactProps.onDVProgress,
                 event);
     }
 
@@ -216,7 +216,15 @@ public class CameraView extends ConstraintLayout implements LifecycleEventListen
     }
 
     public void onNativeEventAfterUpdate() {
+        camera.cameraLog("onNativeEventAfterUpdate");
         WritableMap event = Arguments.createMap();
+        event.putBoolean("isIniting", camera.getIniting());
+        event.putBoolean("isDone", camera.ismDone());
+        event.putBoolean("isRecording", camera.ismRecording());
+        event.putBoolean("isFlashOn", isFlashOn);
+        event.putBoolean("isDeviceBack", camera.isCameraBackForward());
+        event.putBoolean("isRecorded", camera.ismRecording() || (camera.getDuration() > 0));
+
         ReactContext reactContext = (ReactContext)getContext();
         reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),

@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RNCameraModule extends ReactContextBaseJavaModule {
-    public static final String REACT_CLASS = "RNCamera";
+    public static final String REACT_CLASS = "RNDVCamera";
     private static ReactApplicationContext reactContext = null;
 
     public RNCameraModule(ReactApplicationContext context) {
