@@ -13,4 +13,11 @@ public class ReactProps {
 
     public static final String onTakeDone = "onTakeDone";
     public static final String onTakeExit = "onTakeExit";
+
+
+    public static final String onDoneStart = "onDoneStart";
+    public static final String onDoneSuccess = "onDoneSuccess";
+    public static final String onDVCameraReady = "onDVCameraReady";
+    public static final String onDVProgress = "onDVProgress";
+    public static final String onDVAfterUpdate = "onDVAfterUpdate";
 }

@@ -15,11 +15,12 @@ import java.util.List;
 public class RNRecordPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-      // Register your native module
-      // https://facebook.github.io/react-native/docs/native-modules-android.html#register-the-module
-      return Arrays.<NativeModule>asList(
-          new RNRecordModule(reactContext)
-      );
+        // Register your native module
+        // https://facebook.github.io/react-native/docs/native-modules-android.html#register-the-module
+        return Arrays.<NativeModule>asList(
+                new RNRecordModule(reactContext),
+                new RNCameraModule(reactContext)
+        );
     }
 
 
@@ -32,8 +33,9 @@ public class RNRecordPackage implements ReactPackage {
         // Register your native component's view manager
         // https://facebook.github.io/react-native/docs/native-components-android.html#4-register-the-viewmanager
         return Arrays.<ViewManager>asList(
-            new RNRecordManager(),
-                new RNTakePictureManager()
+                new RNRecordManager(),
+                new RNTakePictureManager(),
+                new RNCameraManager()
         );
     }
 }

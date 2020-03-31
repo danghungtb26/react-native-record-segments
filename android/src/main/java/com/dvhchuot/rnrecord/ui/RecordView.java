@@ -309,7 +309,19 @@ public class RecordView extends ConstraintLayout implements LifecycleEventListen
     }
 
     @Override
-    public void onDoneRecorder(String pathFile, long duration) {
+    public void onDoneRecorder(String pathFile, long duration, String type) {
+        UiThreadUtil.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                spinner.setVisibility(INVISIBLE);
+
+            }
+        });
+        onNativeEventPressDone(pathFile, duration);
+    }
+
+    @Override
+    public void onDoneRecorder(String pathFile, long duration, String type, boolean error) {
         UiThreadUtil.runOnUiThread(new Runnable() {
             @Override
             public void run() {

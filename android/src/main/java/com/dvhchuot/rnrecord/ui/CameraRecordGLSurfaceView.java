@@ -1,6 +1,8 @@
 package com.dvhchuot.rnrecord.ui;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLES20;
 import android.os.AsyncTask;
@@ -12,6 +14,7 @@ import com.dvhchuot.rnrecord.data.RecordFragment;
 import com.dvhchuot.rnrecord.recorder.AudioRecordThread;
 import com.dvhchuot.rnrecord.recorder.FFmpegFrameRecorder;
 import com.dvhchuot.rnrecord.recorder.RunningThread;
+import com.dvhchuot.rnrecord.texUtils.FrameBufferObject;
 import com.dvhchuot.rnrecord.utils.CameraHelper;
 import com.dvhchuot.rnrecord.utils.VideoUtils;
 import com.facebook.react.uimanager.ThemedReactContext;
@@ -24,7 +27,11 @@ import org.bytedeco.javacv.Frame;
 import org.bytedeco.javacv.FrameGrabber;
 import org.bytedeco.javacv.FrameRecorder;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.IntBuffer;
 import java.nio.ShortBuffer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -157,14 +164,14 @@ public class CameraRecordGLSurfaceView extends CameraGLSurfaceView implements Su
 
     private void stopRecorder() {
 
-            if (recorder != null) {
-                try {
-                    synchronized (recorder) {
-                        recorder.stop();
-                    }
-                } catch (FFmpegFrameRecorder.Exception e) {
-                    e.printStackTrace();
+        if (recorder != null) {
+            try {
+                synchronized (recorder) {
+                    recorder.stop();
                 }
+            } catch (FFmpegFrameRecorder.Exception e) {
+                e.printStackTrace();
+            }
 
         }
 //        mRecordFragments.clear();
@@ -279,6 +286,74 @@ public class CameraRecordGLSurfaceView extends CameraGLSurfaceView implements Su
 
     }
 
+
+    public synchronized void capture() {
+        if(ismDone()) return;
+        mDone = true;
+        if(cameralistener != null) {
+            cameralistener.onDoneStart();
+        }
+//        new TakePictureTask().execute();
+
+        queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                FrameBufferObject frameBufferObject = new FrameBufferObject();
+                int bufferTexID;
+                IntBuffer buffer;
+                Bitmap bmp;
+
+//                bufferTexID = Common2.genBlankTextureID(drawViewport.width, drawViewport.height);
+//                frameBufferObject.bindTexture(bufferTexID);
+                buffer = IntBuffer.allocate(drawViewport.cutX * drawViewport.cutY);
+
+                GLES20.glReadPixels(drawViewport.startX, drawViewport.startX, drawViewport.cutX,  drawViewport.cutY, GLES20.GL_RGBA, GLES20.GL_UNSIGNED_BYTE, buffer);
+                bmp = Bitmap.createBitmap(drawViewport.cutX,  drawViewport.cutY, Bitmap.Config.ARGB_8888);
+                buffer.rewind();
+                bmp.copyPixelsFromBuffer(buffer);
+
+                Matrix matrix = new Matrix();
+
+                matrix.postScale(1, -1, bmp.getWidth() / 2f, bmp.getHeight() / 2f);
+
+                Bitmap bm2 = Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+
+                bmp.recycle();
+//                frameBufferObject.release();
+//                GLES20.glDeleteTextures(1, new int[]{bufferTexID}, 0);
+
+                String recordedTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+                File mFile = CameraHelper.getOutputMediaFile(recordedTime, CameraHelper.MEDIA_TYPE_IMAGE, context);
+                try {
+                    mFile.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+                //write the bytes in file
+
+                try {
+                    FileOutputStream fileout = new FileOutputStream(mFile);
+                    BufferedOutputStream bufferOutStream = new BufferedOutputStream(fileout);
+                    bm2.compress(Bitmap.CompressFormat.JPEG, 100, bufferOutStream);
+                    bufferOutStream.flush();
+                    bufferOutStream.close();
+                    bm2.recycle();
+                    if(cameralistener != null) {
+                        cameralistener.onDoneRecorder(mFile.getAbsolutePath(),0, "image", false);
+                    }
+                } catch (IOException e) {
+                    if(cameralistener != null) {
+                        cameralistener.onDoneRecorder("",0,"image", true);
+                    }
+                    e.printStackTrace();
+                }
+
+            }
+        });
+    }
+
     class FinishRecordingTask extends AsyncTask<Void, Integer, Void> {
 
         @Override
@@ -358,9 +433,11 @@ public class CameraRecordGLSurfaceView extends CameraGLSurfaceView implements Su
         long duration = getDuration();
         if(cameralistener!=null) {
             cameraLog(newFile.getAbsolutePath() + "  " + String.valueOf(duration));
-            cameralistener.onDoneRecorder(newFile.getAbsolutePath(), duration);
+            cameralistener.onDoneRecorder(newFile.getAbsolutePath(), duration, "video");
         }
     }
+
+
 
     public void setListener(Cameralistener listener) {
         this.cameralistener = listener;
@@ -392,16 +469,16 @@ public class CameraRecordGLSurfaceView extends CameraGLSurfaceView implements Su
             recordFragment.setStartTimestamp(System.currentTimeMillis());
             recordFragment.setFrameStart(mFrameCount);
             mRecordFragments.push(recordFragment);
-                if(recorder == null) {
-                    mVideo = null;
+            if(recorder == null) {
+                mVideo = null;
 
-                    initRecorder();
-                    startRecorder();
-                    if(mRecordingThread == null) {
-                        mRecordingThread = new RecordingThread();
-                        mRecordingThread.start();
-                    }
+                initRecorder();
+                startRecorder();
+                if(mRecordingThread == null) {
+                    mRecordingThread = new RecordingThread();
+                    mRecordingThread.start();
                 }
+            }
             this.mRecording = mRecording;
         }
 
@@ -663,7 +740,8 @@ public class CameraRecordGLSurfaceView extends CameraGLSurfaceView implements Su
     public interface Cameralistener {
         public void onCameraOnReady();
         public void onDoneStart();
-        public void onDoneRecorder(String pathFile, long duration);
+        public void onDoneRecorder(String pathFile, long duration, String type);
+        public void onDoneRecorder(String pathFile, long duration, String type, boolean error);
         public void onProgress(long time);
         public void onReshootSuccess();
     }

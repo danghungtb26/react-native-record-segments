@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		04065134242A5DC200B900E6 /* TakePictureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04065131242A5DC200B900E6 /* TakePictureManager.m */; };
 		04065135242A5DC200B900E6 /* TakePictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04065132242A5DC200B900E6 /* TakePictureView.m */; };
+		0406C6CF24324145004B2474 /* CameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0406C6CE24324145004B2474 /* CameraView.m */; };
+		042DF0312432D7D700979E47 /* CameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 042DF0302432D7D700979E47 /* CameraManager.m */; };
 		048CDADA2429B92000AB56D4 /* RecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CDA932429B92000AB56D4 /* RecordView.m */; };
 		048CDADB2429B92000AB56D4 /* RecoderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CDA942429B92000AB56D4 /* RecoderManager.m */; };
 		048CDADC2429B92000AB56D4 /* SCImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CDA9C2429B92000AB56D4 /* SCImageView.m */; };
@@ -60,6 +62,10 @@
 		04065131242A5DC200B900E6 /* TakePictureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakePictureManager.m; sourceTree = "<group>"; };
 		04065132242A5DC200B900E6 /* TakePictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakePictureView.m; sourceTree = "<group>"; };
 		04065133242A5DC200B900E6 /* TakePictureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePictureManager.h; sourceTree = "<group>"; };
+		0406C6CD24324145004B2474 /* CameraView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraView.h; sourceTree = "<group>"; };
+		0406C6CE24324145004B2474 /* CameraView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraView.m; sourceTree = "<group>"; };
+		042DF02F2432D7D700979E47 /* CameraManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CameraManager.h; path = "/Users/mac/Desktop/github/module_react_native/react-native-recorder-segments/ios/UI/Recorder/CameraManager.h"; sourceTree = "<absolute>"; };
+		042DF0302432D7D700979E47 /* CameraManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CameraManager.m; path = "/Users/mac/Desktop/github/module_react_native/react-native-recorder-segments/ios/UI/Recorder/CameraManager.m"; sourceTree = "<absolute>"; };
 		048CDA932429B92000AB56D4 /* RecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordView.m; sourceTree = "<group>"; };
 		048CDA942429B92000AB56D4 /* RecoderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecoderManager.m; sourceTree = "<group>"; };
 		048CDA952429B92000AB56D4 /* RecoderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecoderManager.h; sourceTree = "<group>"; };
@@ -166,10 +172,14 @@
 		048CDA922429B92000AB56D4 /* Recorder */ = {
 			isa = PBXGroup;
 			children = (
+				042DF02F2432D7D700979E47 /* CameraManager.h */,
+				042DF0302432D7D700979E47 /* CameraManager.m */,
 				048CDA932429B92000AB56D4 /* RecordView.m */,
 				048CDA942429B92000AB56D4 /* RecoderManager.m */,
 				048CDA952429B92000AB56D4 /* RecoderManager.h */,
 				048CDA962429B92000AB56D4 /* RecordView.h */,
+				0406C6CD24324145004B2474 /* CameraView.h */,
+				0406C6CE24324145004B2474 /* CameraView.m */,
 			);
 			path = Recorder;
 			sourceTree = "<group>";
@@ -338,6 +348,7 @@
 			files = (
 				048CDADB2429B92000AB56D4 /* RecoderManager.m in Sources */,
 				048CDAF82429B92000AB56D4 /* SCRecordSessionSegment.m in Sources */,
+				0406C6CF24324145004B2474 /* CameraView.m in Sources */,
 				048CDAE52429B92000AB56D4 /* SCAudioConfiguration.m in Sources */,
 				048CDAEF2429B92000AB56D4 /* SCVideoConfiguration.m in Sources */,
 				048CDAE12429B92000AB56D4 /* SCFilter.m in Sources */,
@@ -357,6 +368,7 @@
 				04065134242A5DC200B900E6 /* TakePictureManager.m in Sources */,
 				048CDAE62429B92000AB56D4 /* NSURL+SCSaveToCameraRoll.m in Sources */,
 				04065135242A5DC200B900E6 /* TakePictureView.m in Sources */,
+				042DF0312432D7D700979E47 /* CameraManager.m in Sources */,
 				048CDAEB2429B92000AB56D4 /* SCSaveToCameraRollOperation.m in Sources */,
 				048CDADC2429B92000AB56D4 /* SCImageView.m in Sources */,
 				048CDAEE2429B92000AB56D4 /* SCAssetExportSession.m in Sources */,
