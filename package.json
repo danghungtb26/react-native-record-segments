@@ -1,7 +1,7 @@
 {
   "name": "react-native-recorder-segments",
   "title": "React Native Recorder Segments",
-  "version": "0.0.4-rc1",
+  "version": "0.0.4-rc2",
   "description": "TODO",
   "main": "index.js",
   "scripts": {
