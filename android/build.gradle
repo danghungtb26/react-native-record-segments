@@ -77,13 +77,11 @@ dependencies {
         exclude group: 'org.bytedeco.javacpp-presets'
     }
     implementation 'com.google.android.material:material:1.0.0'
-    implementation 'com.googlecode.mp4parser:isoparser:1.1.22'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     implementation group: 'org.bytedeco', name: 'javacv', version: "${versions.open}"
     implementation group: 'org.bytedeco.javacpp-presets', name: 'opencv', version: "${versions.opencv}-${versions.open}", classifier: 'android-arm'
     implementation group: 'org.bytedeco.javacpp-presets', name: 'opencv', version: "${versions.opencv}-${versions.open}", classifier: 'android-arm64'
-    implementation group: 'org.bytedeco.javacpp-presets', name: 'opencv', version: "${versions.opencv}-${versions.open}", classifier: 'android-x86'
     implementation group: 'org.bytedeco.javacpp-presets', name: 'ffmpeg', version: "${versions.ffmpeg}-${versions.javacv}"
     implementation group: 'org.bytedeco.javacpp-presets', name: 'ffmpeg', version: "${versions.ffmpeg}-${versions.javacv}", classifier: 'android-arm'
     implementation group: 'org.bytedeco.javacpp-presets', name: 'ffmpeg', version: "${versions.ffmpeg}-${versions.javacv}", classifier: 'android-arm64'

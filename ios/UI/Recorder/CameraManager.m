@@ -11,7 +11,6 @@
 #import <React/RCTUIManager.h>
 #import "React/RCTEventDispatcher.h"
 #import "React/UIView+React.h"
-#import "RecordView.h"
 #import "CameraView.h"
 
 @implementation CameraManager
