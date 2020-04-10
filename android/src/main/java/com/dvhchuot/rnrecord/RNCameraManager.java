@@ -2,7 +2,6 @@ package com.dvhchuot.rnrecord;
 
 import com.dvhchuot.rnrecord.data.ReactProps;
 import com.dvhchuot.rnrecord.ui.CameraView;
-import com.dvhchuot.rnrecord.ui.RecordView;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
