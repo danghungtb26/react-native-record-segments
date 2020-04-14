@@ -22,7 +22,8 @@
 #define minTime 5000
 #define maxTime 15000
 #define frameRate 30
-#define bitrateConfig 5000000
+#define bitrateConfig 3000000
+#define bitrateAudioConfig = 128000
 
 @implementation CameraView {
   bool _initing;
@@ -338,6 +339,7 @@
     _recorder.videoConfiguration.size = CGSizeMake(540, 960);
     _recorder.videoConfiguration.bitrate = bitrateConfig;
     _recorder.audioConfiguration.format = kAudioFormatMPEG4AAC;
+     _recorder.audioConfiguration.bitrate = bitrateAudioConfig;
   }
 }
 
@@ -422,6 +424,7 @@
    assetExportSession.videoConfiguration.bitrate = bitrateConfig;
    assetExportSession.videoConfiguration.maxFrameRate = frameRate;
    assetExportSession.outputUrl = _recorder.session.outputUrl;
+   assetExportSession.audioConfiguration.bitrate = bitrateAudioConfig;
    [assetExportSession exportAsynchronouslyWithCompletionHandler: ^{
      NSLog(@"onDOne %@", [self -> _recorder.session.outputUrl absoluteURL]);
      if(assetExportSession.error == nil) {
