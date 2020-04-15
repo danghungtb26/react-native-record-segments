@@ -23,7 +23,7 @@
 #define maxTime 15000
 #define frameRate 30
 #define bitrateConfig 3000000
-#define bitrateAudioConfig = 128000
+#define bitrateAudioConfig 128000
 
 @implementation CameraView {
   bool _initing;
